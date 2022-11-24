@@ -157,3 +157,64 @@ label{
 	color: rgb(25, 25, 112);
 
 }
+
+
+
+
+.noti{
+
+  position: absolute;
+  left:20px ;
+  top: 20px;
+  border:1px solid transparent; 
+  height: auto; 
+  width: auto;
+  border:2px  solid transparent;
+  border-radius: 25px; 
+  padding: 10px 20px 10px  20px  ;
+  
+}
+.type{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mesage{
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.Error , .Acces  {
+  border-radius: 50%;
+  background: var(--color);
+  height: 20px;
+  width:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  border:none;
+  box-shadow: 0px  0px 5px 1px black;
+}
+.one{
+	filter: opacity(0);
+	box-shadow: 0px 0px 10px  rgba(0,0,0,0.5);
+	border-radius: 25px;
+	padding: 10px;
+	animation: destello 2.5s  linear ;
+
+}
+@keyframes destello {
+  0%{
+    filter: opacity(1);
+  }
+  100%{
+    filter: opacity(0);
+
+  }
+
+}

@@ -24,20 +24,15 @@ $btn_pass.addEventListener('click' , () => {
 let bh = id('bh');
 let bachilleratos = [
 	['Fisico-Matematico','Humanidades'] , 
-	['PGA', 'Humanidades'] ,  
-	['Quimica','Humanidades '] 
+	['Economico-Administrativo', 'Humanidades'] ,  
+	['Quimico-Biologo','Humanidades '] 
 ] ; 
 
 const opt = (array) => {
-	console.log(array) ;
 	let options =  `
 		<option value="${array[0]}">${array[0]}</option>
 		<option value="${array[1]}">${array[1]}</option>
-
 	` ; 
-
-
-
 	return options ; 
 
 };
@@ -74,3 +69,52 @@ btn_registro.forEach((btn) => {
 	});
 
 } );
+
+// notificacion 
+const noti_emoji = ["❌" , "✔️"] 
+let noti_color_alert = ['rgb(255, 111, 104)', 'rgb(130, 224, 170)'] ; 
+let nt  = document.getElementById('notificacion') ; 
+
+function notificacio(type , text ){
+  let color = type ? noti_color_alert[1]  : noti_color_alert[0] ; 
+  let icon = type ?  noti_emoji[1] : noti_emoji[0] ; 
+ nt.innerHTML = "" ; 
+   let content  = `
+   <div class="one" >
+    <div class="type">
+     <button class="Error" disabled style="--color:${color};">
+      ${icon}
+    </button>
+
+  </div>
+  <div class="mesage" id="sms">
+    ${text}
+  </div>
+  ` ;
+ 
+
+  nt.innerHTML  += content ; 
+  
+   
+};
+
+
+
+let isEmpty = (objet) =>{
+	for(let i  in objet){
+		if(objet[i].length == 0 ){
+			notificacio(0 , `El campo ${i} esta vacio`) ; 
+			return  true ; 
+		}
+	}
+	return false ; 	
+};
+
+
+//  fetch   
+let $form_registro = $('#registro') ; 
+$form_registro.addEventListener('submit' , event =>{
+	event.preventDefault() ; 
+	let datos =  Object.fromEntries(new  FormData(event.target)); // recuperar datos ingresados 
+	isEmpty(datos) ;  // Estan vacios ? 
+ }) ;

@@ -7,10 +7,12 @@
 	<title>Session</title>
 </head>
 <body>
+		<div class="noti" id='notificacion'></div>
+
 	<div class="all">
 		<div class="login"  id="log">
 
-			<form action="">
+			<form action="" id="sesion">
 				<span style="color: rgb(0, 128, 128);">INICIAR  SESION</span>
 				<input type="text" name="usuario" id="" placeholder="Usuario">
 				<div class="cont">
@@ -30,16 +32,16 @@
 
 		</div>	
 		<div class="register" id="reg" style="display: none;">
-			<form action="">
+			<form action="" id="registro">
 				<span style="color: rgb(0, 128, 128);">REGISTRO</span>
 
 				<input type="text" name="Nombre" id="" placeholder="Nombre" checked>
-				<input type="text" name="Ap" id="" placeholder="Apellido Paterno">
-				<input type="text" name="Am" id="" placeholder="Apellido Materno">
+				<input type="text" name="Apellido Paterno" id="" placeholder="Apellido Paterno">
+				<input type="text" name="Apellido Materno" id="" placeholder="Apellido Materno">
 				<label for="">
 					<span class='lb'>Grupo</span>		
-					<select name="" id="grupo">
-						<option value="">Escoge un grupo</option>
+					<select name="grupo" id="grupo">
+						<option value="">Escoge  tu grupo</option>
 						<option value="502A">502-A</option>
 						<option value="502B">502-B</option>
 						<option value="522A">502-A</option>
