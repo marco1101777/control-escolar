@@ -33,7 +33,7 @@ footer a{
 	color : white; 
 	text-decoration: none; 
 	border-bottom: 1px solid transparent;
-	font-size: 11px;
+	font-size: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -41,11 +41,11 @@ footer a{
 footer a:hover{
 	filter: brightness(0.5);
 	text-decoration: white underline;
+
 }
 footer .readme{
 	display: grid;
 	grid-template-rows: repeat(auto-fit, 20px);
-
 	height: 90%;
 	width: 10%;
 	border:2px  solid red;

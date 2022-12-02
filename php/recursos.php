@@ -1,8 +1,8 @@
 <?php 
-	function gotTo($url){
+	function go($url){
 		echo "
 			<script > 
-				window.location.assign($url)
+				window.location.assign('$url') ;
 			</script>";
 	}	  
 ?>

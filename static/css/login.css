@@ -218,3 +218,23 @@ label{
   }
 
 }
+
+.charget{
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center  ;
+  position: absolute;
+  z-index: 20;
+}
+@keyframes  gira{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+
+}

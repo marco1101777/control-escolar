@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,12 @@
 	<title>Session</title>
 </head>
 <body>
-		<div class="noti" id='notificacion'></div>
-
+	<div class="noti" id='notificacion'></div>
+	<div class="charget" id="charget" style="display: none;"></div>
 	<div class="all">
-		<div class="login"  id="log">
+		<div class="login" style="display: none ;"  id="log">
 
-			<form action="" id="sesion">
+			<form action="php/registro.php" id="sesion" method="POST">
 				<span style="color: rgb(0, 128, 128);">INICIAR  SESION</span>
 				<input type="text" name="usuario" id="" placeholder="Usuario">
 				<div class="cont">
@@ -22,7 +22,7 @@
 					</button>
 				</div>
 				<div class="opc">
-					<button type="submit"  id="btn_opc" style="--fondo:rgb(0, 139, 139);">
+					<button type="submit"  id="btn_opc" style="--fondo:rgb(0, 139, 139);" name="inicio">
 						Iniciar
 					</button>
 					<button type="reset"  id="btn_opc" style="--fondo:rgb(199, 0, 57);">Cancelar</button>
@@ -31,23 +31,24 @@
 			</form>
 
 		</div>	
-		<div class="register" id="reg" style="display: none;">
+		<div class="register" id="reg" style="display: flex;">
 			<form action="" id="registro">
 				<span style="color: rgb(0, 128, 128);">REGISTRO</span>
 
-				<input type="text" name="Nombre" id="" placeholder="Nombre" checked>
-				<input type="text" name="Apellido Paterno" id="" placeholder="Apellido Paterno">
-				<input type="text" name="Apellido Materno" id="" placeholder="Apellido Materno">
+			<input type="text" name="numero_control" placeholder="Numero Control" id="numeroControl">
+				<input type="text" name="Nombre" id="Nombre" placeholder="Nombre" checked>
+				<input type="text" name="Apellido_paterno" id="Apellido_paterno" placeholder="Apellido Paterno">
+				<input type="text" name="Apellido_materno" id="Apellido_materno" placeholder="Apellido Materno">
 				<label for="">
 					<span class='lb'>Grupo</span>		
 					<select name="grupo" id="grupo">
 						<option value="">Escoge  tu grupo</option>
-						<option value="502A">502-A</option>
-						<option value="502B">502-B</option>
-						<option value="522A">502-A</option>
-						<option value="522B">502-B</option>
-						<option value="530A">530-A</option>
-						<option value="530B">530-B</option>
+						<option value="602A">602A</option>
+						<option value="602B">602B</option>
+						<option value="622A">602A</option>
+						<option value="622B">602B</option>
+						<option value="630A">630A</option>
+						<option value="630B">630B</option>
 					</select>	
 				</label>
 				
@@ -59,14 +60,15 @@
 
 				</select>	
 			</label>
-				<input type="text" name="Usuario" id="" placeholder="Nombre de Usuario">
+				
 				<div class="opc">
-					<button type="submit"  id="btn_opc" style="--fondo:rgb(0, 139, 139);">
+					<button type="submit"  id="btn_opc" style="--fondo:rgb(0, 139, 139);" name="registro" >
 						Enviar
 					</button>
 					<button type="reset"  id="btn_opc" style="--fondo:rgb(199, 0, 57);">Cancelar</button>
 				</div>
-								<a href="#" id="btn_registro">Iniciar sesion</a>
+								<!-- <a href="#" id="btn_registro">Iniciar sesion</a> -->
+								<a href="tablaAlumnos.php" >Registros</a>
 
 
 			</form>
@@ -74,6 +76,7 @@
 		</div>
 
 	</div>
+	<script type="text/javascript" src="static/js/grupos.js"></script>
 	<script type="text/javascript" src="static/js/login.js"></script>
 </body>
 </html>

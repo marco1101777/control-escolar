@@ -37,19 +37,25 @@ const opt = (array) => {
 
 };
 
+
+function  changeValueGroup(group){
+		let  opc = -1  ; 
+	if(group  == '602A'  ||  group == '602B'){
+		opc = 2 ; 
+	}else if(group  == '622A'  ||  group == '622B'){
+		opc  =1 ;
+	}else if(group  == '630A'  ||  group == '630B'){
+		opc = 0 ; 
+	}
+	console.log(opc);
+	bh.innerHTML  = opc  == -1 ? "Ups": opt(bachilleratos[opc])  ; 
+
+}
+
 let grupo  = $('#grupo') ; 
 grupo.addEventListener('change' , () => {
 	let group = grupo.value ; 
-	let  opc = -1  ; 
-	if(group  == '502A'  ||  group == '502B'){
-		opc = 1 ; 
-	}else if(group  == '522A'  ||  group == '522B'){
-		opc  =2 ;
-	}else if(group  == '530A'  ||  group == '530B'){
-		opc = 0 ; 
-	}
-	bh.innerHTML  = opt(bachilleratos[opc]) ; 
-
+	changeValueGroup(group);	
 });
 
 
@@ -70,7 +76,7 @@ btn_registro.forEach((btn) => {
 
 } );
 
-// notificacion 
+	// notificacion Reindent
 const noti_emoji = ["❌" , "✔️"] 
 let noti_color_alert = ['rgb(255, 111, 104)', 'rgb(130, 224, 170)'] ; 
 let nt  = document.getElementById('notificacion') ; 
@@ -116,5 +122,95 @@ let $form_registro = $('#registro') ;
 $form_registro.addEventListener('submit' , event =>{
 	event.preventDefault() ; 
 	let datos =  Object.fromEntries(new  FormData(event.target)); // recuperar datos ingresados 
-	isEmpty(datos) ;  // Estan vacios ? 
+	let  prueba  =  new FormData(event.target); 
+	console.log(event.target) ;
+	prueba.append("registro" , "") ; 
+	if(!isEmpty(datos)){   // Estan vacios ?
+		charget(true) ;
+		fetch("php/registro.php", {method: "POST",body: prueba})
+		.then(res => res.text())
+		.then(res => { 
+			charget(false) 
+			window.location.assign("log.php") ;
+			console.log(res);
+		})
+		.catch(e => console.log(e)) ;
+	}  
  }) ;
+
+
+
+
+// fetch login  numero control 
+let $input_numero_control = $('#numeroControl') ;
+$input_numero_control.addEventListener('keyup', (e) => {
+	let value =  $input_numero_control.value ; 
+	let  encontrado ;  
+	if(value.length == 14){
+		encontrado = buscarMatricula(value); 
+
+	}
+	console.log(encontrado);
+	if(encontrado != null ){
+		formDataValues(encontrado);
+	}
+
+
+}); 
+
+
+
+function formDataValues(datos){
+	id('Nombre').value = datos['Nombre'].replace(/(^\w{1})|(\s+\w{1})/g, letra =>  letra.toUpperCase())   ;
+	id('Apellido_paterno').value = datos['Apellido_paterno'].replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()) ; 
+	id('Apellido_materno').value = datos['Apellido_materno'].replace(/(^\w{1})|(\s+\w{1})/g, letra => letra.toUpperCase()) ; 
+	id('grupo').value = datos['Grupo'].toUpperCase()  ;
+	changeValueGroup(datos['Grupo'].toUpperCase());
+}
+
+
+function charget(ok = false ){
+  let pantalla  =  document.getElementById('charget') 
+
+
+  let  enter  = `<div
+    style="
+      background:white;
+      height:200px;
+      width:300px;
+      border-radius:25px ;
+      text-align:center;
+      padding:10px; 
+      box-sizing: border-box;
+    " 
+  >
+    Registrando ... 
+    Espere un momento 
+    <br>
+    <button 
+    disabled 
+    style="
+      background:transparent;
+      height:60px;
+      width:60px;
+      border-radius:50%;
+      border:none ;
+      animation:gira 2s  linear  infinite ; 
+      margin-top:40px ;
+      border-left:1px  solid blue;
+    "
+    >
+     
+    </button>
+  
+  
+  </div>` ;   
+  if(ok){
+    pantalla.innerHTML  = enter  ; 
+    pantalla.style.display = "flex" ; 
+
+  }else{
+    pantalla.style.display = "none" ; 
+  }
+  
+}
