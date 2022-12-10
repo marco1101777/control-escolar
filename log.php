@@ -10,6 +10,7 @@
 	<div class="noti" id='notificacion'></div>
 	<div class="charget" id="charget" style="display: none;"></div>
 	<div class="all">
+		<img src="static/img/logo.jpeg" alt="" class="fondo">
 		<div class="login" style="display: none ;"  id="log">
 
 			<form action="php/registro.php" id="sesion" method="POST">
@@ -34,14 +35,14 @@
 		<div class="register" id="reg" style="display: flex;">
 			<form action="" id="registro">
 				<span style="color: rgb(0, 128, 128);">REGISTRO</span>
-
+			
 			<input type="text" name="numero_control" placeholder="Numero Control" id="numeroControl">
 				<input type="text" name="Nombre" id="Nombre" placeholder="Nombre" checked>
 				<input type="text" name="Apellido_paterno" id="Apellido_paterno" placeholder="Apellido Paterno">
 				<input type="text" name="Apellido_materno" id="Apellido_materno" placeholder="Apellido Materno">
 				<label for="">
 					<span class='lb'>Grupo</span>		
-					<select name="grupo" id="grupo">
+					<select name="grupo" id="grupo" >
 						<option value="">Escoge  tu grupo</option>
 						<option value="602A">602A</option>
 						<option value="602B">602B</option>

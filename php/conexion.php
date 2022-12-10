@@ -63,11 +63,25 @@
 
 	}
 
-	function update($id,$datos){
+	function  getOneUser($id){
 		global $connect ; 
+		$query = "SELECT  * FROM Alumnos WHERE Numero_Control = '{$id}'" ;
+		$data = mysqli_query($connect , $query) ;
+		return mysqli_fetch_array($data) ;  
+	}
+
+	function update($datos){
+		global $connect ;
+
+		$query  = "UPDATE Alumnos  SET Nombre = '{$datos[1]}',Apellido_paterno = '{$datos[2]}',Apellido_materno = '{$datos[3]}',Grupo = '{$datos[4]}', Bachillerato = '{$datos[5]}',Numero_grupo = '{$datos[6]}' WHERE Numero_Control = '{$datos[0]}'" ;
+		$res  =  mysqli_query($connect , $query);
+		return $res ;
+
 		
 
 	}
+
+
 
 	function getTable(){
 		global $connect  ; 
@@ -87,7 +101,7 @@
 		" ; 
 		$cont   = 1 ;
 		while($row  =  mysqli_fetch_array($res)){
-			$stl =  $cont % 2  ==  0 ? "background:rgba(230, 230, 250,0.5);" :  "background:white;" ;
+			$stl =  $cont % 2  ==  0 ? "background:rgba(0,0,0,0.5); color:white;" :  "background:white;" ;
 			$tabla  .=  "
 					<tr style='{$stl}'>
 						<td>{$row['Numero_Control']}</td>
@@ -108,6 +122,13 @@
 		}
 		$tabla .= "</table>" ; 
 		return $tabla ; 
+
+	}
+
+	function getTableJSON(){
+		global  $connect ;   
+
+		return  0 ; 	
 
 	}
 

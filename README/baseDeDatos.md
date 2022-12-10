@@ -24,3 +24,8 @@ CREATE TABLE Alumnos(
 # Tabla sql
 | Datos | Tipo | 
 | --  | -- |
+
+
+# Nuevo 
+
+ - [x]   
