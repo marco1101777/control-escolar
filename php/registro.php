@@ -32,9 +32,10 @@
 		$numero =  $_POST['numero_control'] ;
 
 		if ( insertRegistro([$numero,$Nombre,$Apellido_paterno,$Apellido_materno,$Grupo,$Bachillerato ]) ) {
+			$idAdmin = getDataUser($_POST["admin"]) ; 
+			print_r($idAdmin); 
+			reporte($idAdmin,$numero) ;
 			echo json_encode("{'Respuesta' : 'Registrado  con exito'}" ); 
-
-
 		}else{
 			echo json_encode("{'Respuesta' : 'Algo salio mal'}") ; 
 		}
@@ -47,28 +48,40 @@
 	if(isset($_POST['inicio'])){
 				$user = $_POST['user'];
 				$pass = $_POST['pass'];
-				$ver = $db->query("SELECT * FROM login WHERE user = '{$user}'");
+				$query = "SELECT * FROM login WHERE user = '{$user}'" ; 
+				$ver = mysqli_query($connect , $query ) ; 
 				
 
 				$respuesta = "Bienveido"; 
 				if($ver){
-					$row = $ver->fetchArray();
+					$row = mysqli_fetch_array($ver);
 
 					if($row['password'] == $pass ){
-						$USUARIO = "user".$row['id'];
+						$USUARIO = "user".$row['Id'];
 						$_SESSION[$USUARIO] = $user;
 						$cookie_name = "id";
 						$cookie_value = $USUARIO;
 						setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-						echo "<script>window.location.assign('menu.php')</script>" ;
+						go("../index.php");
+
 					}else{
 						$respuesta = "Datos incorrectos";
-						echo "<script>window.location.assign('index.php?sms=$respuesta')</script>";   	
+						go("../session.php") ;
 					}
 				}else{
 						$respuesta = "Datos incorrectos";
-						echo "<script>window.location.assign('index.php?sms=$respuesta')</script>";
+						go("../session.php") ;
+
 				}
+			}
+
+			if(isset($_GET['del'])) {
+				session_unset($_GET['del']);
+				
+				$cookie_name = "id";
+				$cookie_value = $USUARIO;
+				setcookie($cookie_name, $cookie_value, time() - 60 , "/");
+				go("../index.php");
 			}
 			//requerido solo si convertimos este archivo en una api visual 
 			// else if(!isset($_SESSION[$_COOKIE['id']])){

@@ -16,21 +16,32 @@ CREATE TABLE Alumnos(
 
 -- Proximamente
 
-CREATE TABLE  Usuarios (
+CREATE TABLE  login (
 	Id  INT  NOT  NULL  AUTO_INCREMENT , 
-	Usuario TEXT NOT NULL  , 
-	Password  TEXT NOT NULL , 
-	Roll  TEXT NOT NULL  , -- roles admitidos (Admin) 
+	Nombre  TEXT NOT NULL , 	
+	user TEXT NOT NULL  , 
+	password  TEXT NOT NULL , 
+	Roll  TEXT NOT NULL  , -- roles admitidos (Admin,Register) 
 	PRIMARY KEY(Id)
+) ; 
+
+CREATE  TABLE Reporte (
+	Id INT NOT  NULL AUTO_INCREMENT ,
+	Admin TEXT NOT NULL , 
+	Matricula TEXT NOT NULL , 
+	Fecha TEXT NOT NULL , 
+	PRIMARY KEY(Id) 
 ) ; 
 
 
 
-INSERT  INTO  Usuarios (Usuario,Password,Roll) VALUES 
-("root","root777" , "Admin"); 
+INSERT  INTO  login (Nombre,user,password,Roll)  VALUES 
+("Marco","root","root","admin"); 
+
+INSERT  INTO  login (Nombre,user,password,Roll)  VALUES 
+("Marco Antonio","admin","root","admin"); 
 
 
-SELECT  COUNT(*) FROM Alumnos WHEN Bachillerato = "Fisico-Matematico"  &&  Numero_grupo =  1 ; -- return cuantos de un  $bachillerato esten en el grupo 1  
 
 
 

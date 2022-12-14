@@ -1,11 +1,13 @@
 
 <?php 
+	include("php/conexion.php")  ; 
+	session_start() ;
+	//Basic  session  veryficable 
 	include("php/recursos.php") ;
-	go("log.php") ;
-	session_start();
-	// if(!isset($_SESSION[$_COOKIE['id']])){
-	// 	header("location:index.php");
-	// }
+	
+	if(!isset($_SESSION[$_COOKIE['id']])){
+	 	go("session.php");
+	}
 
 
 
@@ -22,51 +24,15 @@
 </head>
 <body>
 	<div class="all">
-<<<<<<< HEAD
-		<header>
-			<span > BACHILLERATOS CECYTE URUAPAN</span>
-
-		</header>
-
-		<div class="conetenido">
-			AQUI VA MAS CONTENIDO DE INFORMACION SOBRE EL BACHILLERATO QUE ESCOGIERON 
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			
-
+		<div class="header">
+			<span>Bienvenido <strong> <?php  $nombre = getDataUser($_COOKIE["id"]) ; echo $nombre["Nombre"] ; ?> </strong> al panel de acceso</span>
 		</div>
-		<footer>
-			<div class="readme">
-				<a href="README.html">MAS INFO</a>
-				<a href="README.html">EQUIPO</a>
-				<a href="">&copy;</a>
-			</div>
-		</footer>
-=======
+		<div class="menu">
+			<a href="log.php">Registro</a>
+			<a href="tablaAlumnos.php">Ver registros</a>
+		</div>
 		
-		
->>>>>>> 2a79103097e0ad95cb5d95e20d955c97d883d496
+		<?php echo "<a id='exit' href='php/registro.php?del=".$_COOKIE["id"]."'><img src='static/img/exit.svg' alt='salir'></a>";?>
 	</div>
 </body>
 </html>

@@ -116,6 +116,23 @@ let isEmpty = (objet) =>{
 	return false ; 	
 };
 
+function getCookie(cname) {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	for(let i = 0; i <ca.length; i++) {
+	  let c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
+
+
 
 //  fetch   
 let $form_registro = $('#registro') ; 
@@ -128,12 +145,15 @@ $form_registro.addEventListener('submit' , event =>{
 		let  prueba  =  new FormData(event.target); 
 		console.log(event.target) ;
 		prueba.append("registro" , "") ; 
+		prueba.append("admin" , getCookie("id")) ;
+
 		if(!isEmpty(datos)){   // Estan vacios ?
 			charget(true) ;
 			fetch("php/registro.php", {method: "POST",body: prueba})
 			.then(res => res.text())
 			.then(res => { 
 				charget(false) 
+				console.log(res) ;
 				window.location.assign("log.php") ;
 			})
 			.catch(e => console.log(e)) ;

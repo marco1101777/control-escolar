@@ -1,12 +1,18 @@
 <?php 
 	include('php/conexion.php');
-	include('php/recursos.php');
+	session_start() ;
+		//Basic  session  veryficable 
+	include("php/recursos.php") ;
+	
+	if(!isset($_SESSION[$_COOKIE['id']])){
+	 	go("session.php");
+	}
+
+
+
 
 	$tbl  = getTable()  ; 
-    $tblUpdate = getTable() ; 
 ?>
-
-
 
 
 <!DOCTYPE html>

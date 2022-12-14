@@ -116,6 +116,8 @@
 						<td>
 							<a href='php/registro.php?id={$row['Numero_Control']}&update'  class='btn' style='--fondo:#2ECC71;'>Update</a>	
 							<a href='php/registro.php?id={$row['Numero_Control']}&delete' class='btn'style='--fondo:#E74C3C;' >Delete</a>	
+							<a href='php/reporte.php?admin={$row['Numero_Control']}' class='btn'style='--fondo:#2ECC71;' >Info</a>	
+
 						</td>
 
 					</tr>" ;
@@ -153,6 +155,65 @@
 		
  		return  $contador["cnt"] == 35 ? 2 : 1 ;  
 	}
+	function  getDataUser($id){
+		global $connect ; 
+		$idData = explode("user" , $id); 
+		$query = "SELECT * FROM  login WHERE Id = '{$idData[1]}'" ;
+		$data  = mysqli_query($connect ,$query ) ;
+		
+		if($data){
+			
+			$dta = mysqli_fetch_array($data) ; 
+			return $dta ;
+		}else{
+			return "NADA" ;	
+		}
+	}
+
+	function  reporte($admin, $quien){
+		date_default_timezone_set('America/Mexico_City');
+		global $connect ; 
+		$data =  $admin["Id"] ; 
+		$fecha = date('l jS \of F Y h:i:s A') ; 
+		$query  = "INSERT  INTO Reporte (Admin,Matricula,Fecha) VALUES ('{$data}','{$quien}','{$fecha}')" ;  
+		$sql = mysqli_query($connect,$query)  ; 
+		return $sql ; 
+	}
+
+	function getReporte($mtrl){
+		global $connect ; 
+		$tabla = "<table  borde='1'  class='tablaRegistros'  >  
+					<tr class='one'>
+						<td>Admin</td>
+						<td>Fecha</td>
+						<td>Matricula</td>
+					</tr>
+		" ;  
+		
+		$query  = "SELECT * FROM  Reporte WHERE  Matricula = '{$mtrl}'" ;
+		$info = mysqli_query($connect,$query) ; 
+		if($info){
+		
+		$cont   = 1 ;
+		while($row  =  mysqli_fetch_array($info)){
+			$stl =  $cont % 2  ==  0 ? "background:rgba(0,0,0,0.5); color:white;" :  "background:white;" ;
+			$admin = getDataUser("user".$row["Admin"]) ; 
+			$tabla  .=  "
+					<tr style='{$stl}'>
+						<td>{$admin["Nombre"]}</td>
+						<td>{$row['Fecha']}</td>
+						<td>{$row['Matricula']}</td>
+					</tr>" ;
+					$cont += 1 ;
+
+		}
+		$tabla .= "</table>" ;
+
+		return $tabla  ; 
+
+		}}
+
+	
 
 	
 ?>

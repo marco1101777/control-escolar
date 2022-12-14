@@ -1,3 +1,14 @@
+<?php 
+	session_start() ;
+	//Basic  session  veryficable 
+	include("php/recursos.php") ;
+	session_start();
+	if(!isset($_SESSION[$_COOKIE['id']])){
+	 	go("session.php");
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -75,6 +86,18 @@
 			</form>
 			
 		</div>
+		<a href="index.php" style="position: fixed;
+	right: 40px;
+	bottom: 40px;
+	text-decoration: none;
+	color :white;
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	background: #272727;
+	display: flex;
+	justify-content: center;
+	align-items: center;">Home</a>
 
 	</div>
 	<script type="text/javascript" src="static/js/grupos.js"></script>
