@@ -60,7 +60,6 @@
 				<a href="README.html">MAS INFO</a>
 				<a href="README.html">EQUIPO</a>
 				<a href="">&copy;</a>
-
 			</div>
 		</footer>
 	</div>

@@ -7,14 +7,12 @@
 
 .tablaRegistros , td ,tr {
 	border: black 2px  solid ;
-
 }
 
 .tablaRegistros{
 	margin-top:20px;
 	border-collapse: collapse;
 	box-shadow: 0px 0px  20px rgba(0, 0, 0, 0.5);
-
 }
 .one{
 	background: rgb(147, 112, 219);

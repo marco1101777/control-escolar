@@ -1,5 +1,7 @@
 <?php 
-	$connect = mysqli_connect('localhost' , 'root'  , 'root'   , 'Bachilleratos') ; 
+
+	include("data.php") ; 
+	$connect = mysqli_connect('localhost' , 'root'  , $passwordSQL   , 'Bachilleratos') ; 
 	// echo  $connect  ? "Conexion Buena " : "Salio algo mal " ; 
 	function transform_data($data){
 		$query = '' ;  
@@ -131,5 +133,5 @@
  		return  $contador["cnt"] == 35 ? 2 : 1 ;  
 	}
 
-
+	
 ?>
