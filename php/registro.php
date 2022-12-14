@@ -15,6 +15,12 @@
 		}
 	}
 
+	if(isset($_GET['update'])){
+		$id  =  $_GET['id'] ;
+		$data = getOneUser($id) ;   
+		echo renderFormUpdate($data) ;  
+	}
+
 
 	if(isset($_POST['registro'])){
 

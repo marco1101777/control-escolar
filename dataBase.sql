@@ -12,6 +12,10 @@ CREATE TABLE Alumnos(
 
 
 
+
+
+-- Proximamente
+
 CREATE TABLE  Usuarios (
 	Id  INT  NOT  NULL  AUTO_INCREMENT , 
 	Usuario TEXT NOT NULL  , 

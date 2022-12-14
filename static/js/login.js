@@ -1,7 +1,7 @@
 const id = ID => document.getElementById(ID) , $ = selector => document.querySelector(selector)  , $$ = selector => document.querySelectorAll(selector)
 
 
-
+let  stateRegister = false ; 
 //simple boton input type text : password
 let $btn_pass = $('#password') ; 
 let statePass  = true ;
@@ -121,21 +121,28 @@ let isEmpty = (objet) =>{
 let $form_registro = $('#registro') ; 
 $form_registro.addEventListener('submit' , event =>{
 	event.preventDefault() ; 
-	let datos =  Object.fromEntries(new  FormData(event.target)); // recuperar datos ingresados 
-	let  prueba  =  new FormData(event.target); 
-	console.log(event.target) ;
-	prueba.append("registro" , "") ; 
-	if(!isEmpty(datos)){   // Estan vacios ?
-		charget(true) ;
-		fetch("php/registro.php", {method: "POST",body: prueba})
-		.then(res => res.text())
-		.then(res => { 
-			charget(false) 
-			window.location.assign("log.php") ;
-			console.log(res);
-		})
-		.catch(e => console.log(e)) ;
-	}  
+
+	if(stateRegister){
+
+		let datos =  Object.fromEntries(new  FormData(event.target)); // recuperar datos ingresados 
+		let  prueba  =  new FormData(event.target); 
+		console.log(event.target) ;
+		prueba.append("registro" , "") ; 
+		if(!isEmpty(datos)){   // Estan vacios ?
+			charget(true) ;
+			fetch("php/registro.php", {method: "POST",body: prueba})
+			.then(res => res.text())
+			.then(res => { 
+				charget(false) 
+				window.location.assign("log.php") ;
+			})
+			.catch(e => console.log(e)) ;
+			stateRegister = false ; 
+		}  
+	}else{
+		notificacio(0, 'Numero de Control no encontrado') ;
+
+	}
  }) ;
 
 
@@ -153,6 +160,9 @@ $input_numero_control.addEventListener('keyup', (e) => {
 	console.log(encontrado);
 	if(encontrado != null ){
 		formDataValues(encontrado);
+		stateRegister = true ; 
+	}else{
+		stateRegister = false ; 
 	}
 
 

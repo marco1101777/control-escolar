@@ -12,6 +12,14 @@ a{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+}
+
+.fondo{
+	position: absolute;
+	z-index: -1; 
+	filter: blur(8px);
+	width: 70%;
 }
 
 .login{
@@ -35,7 +43,7 @@ a{
 	50%{
 		box-shadow: 0px 0px 25px 20px  		rgba(100, 149, 237 , 0.5);
 
-	}
+		}
 	100%{
 		box-shadow: 0px 0px 25px 20px  rgba(123, 104, 238 , 0.5);
 
@@ -60,6 +68,7 @@ a{
 	font-size: 20px;
 }
 input[type=text]  {
+
 	border: none;
 	border-bottom:1px  solid black;
 	height: 20px;
@@ -125,6 +134,7 @@ input[type=password]{
 	animation : box  1.5s linear  infinite  ; 
 	padding: 50px;
 	overflow: hidden;
+	background: white;
 		
 
 }
@@ -138,6 +148,7 @@ input[type=password]{
 	grid-template-rows: 40px 40px 40px 40px 40px 40px 40px;
 	grid-template-columns: 90% ;
 	position: relative;
+
 
 }
 

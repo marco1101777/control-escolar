@@ -3,7 +3,7 @@
 	include('php/recursos.php');
 
 	$tbl  = getTable()  ; 
-	
+    $tblUpdate = getTable() ; 
 ?>
 
 
@@ -14,13 +14,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Tabla Alumnos</title>
 	<link rel="stylesheet" href="static/css/tabla.css">
 </head>
 <body>
 
 	<div class="all">
-			<?php  echo $tbl?>
+			<?php  echo $tbl ;?>
 	</div>
 	<a href="index.php" class="back">Home</a>
 </body>

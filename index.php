@@ -18,10 +18,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="static/css/style.css">
 
-	<title>index</title>
+	<title>Control</title>
 </head>
 <body>
 	<div class="all">
+<<<<<<< HEAD
 		<header>
 			<span > BACHILLERATOS CECYTE URUAPAN</span>
 
@@ -62,6 +63,10 @@
 				<a href="">&copy;</a>
 			</div>
 		</footer>
+=======
+		
+		
+>>>>>>> 2a79103097e0ad95cb5d95e20d955c97d883d496
 	</div>
 </body>
 </html>
